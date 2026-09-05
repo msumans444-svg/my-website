@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compare live prices, delivery fees, offers and availability across India's leading ecommerce and quick-commerce platforms with PricePilot AI.">
+<title>PricePilot AI — India's Smart Price Comparison</title>
+<style>
+:root{
+  --ink:#172033;--muted:#6e7890;--line:#e8ebf2;--bg:#f7f9fc;--card:#fff;
+  --primary:#635bff;--primary-dark:#5148e8;--mint:#0bb58b;--orange:#ff8b37;
+  --shadow:0 14px 38px rgba(29,39,76,.08);--radius:20px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.45}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+.container{max-width:1240px;margin:auto;padding:0 24px}
+.topbar{background:#18223a;color:#dce4ff;font-size:12px;padding:9px 0}
+.topbar .container{display:flex;justify-content:space-between;gap:16px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav{height:76px;display:flex;align-items:center;gap:30px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;white-space:nowrap}
+.logo-mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#6f65ff,#13c99c);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 7px 16px #655cff40}
+.logo span{color:var(--primary)}
+.navlinks{display:flex;gap:24px;color:#68738a;font-size:14px;font-weight:600}
+.navlinks a:hover{color:var(--primary)}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:11px}
+.icon-btn,.outline-btn{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:11px;padding:10px 13px;font-weight:700}
+.icon-btn{font-size:18px}
+.primary-btn{background:var(--primary);color:#fff;border-radius:11px;padding:11px 17px;font-weight:750;box-shadow:0 8px 18px #635bff30}
+.primary-btn:hover{background:var(--primary-dark)}
+.hero{padding:60px 0 38px;background:radial-gradient(circle at 78% 15%,#e9e7ff 0,transparent 31%),linear-gradient(180deg,#fff 0,#f7f9fc 100%)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:55px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--primary);background:#eeedff;border-radius:30px;padding:7px 12px;font-size:12px;font-weight:800;margin-bottom:20px}
+.eyebrow i{width:7px;height:7px;background:#19bd8c;border-radius:50%;display:inline-block}
+h1{font-size:clamp(36px,5vw,63px);line-height:1.04;letter-spacing:-2.8px;max-width:710px}
+h1 em{font-style:normal;color:var(--primary)}
+.hero-copy{color:var(--muted);font-size:17px;max-width:610px;margin:20px 0 26px}
+.searchbox{display:flex;align-items:center;background:#fff;border:1px solid #dfe3ee;border-radius:17px;box-shadow:var(--shadow);padding:7px;max-width:700px}
+.searchbox .search-icon{font-size:21px;margin:0 12px;color:#8790a3}
+.searchbox input{border:0;outline:0;flex:1;min-width:0;font-size:15px;color:var(--ink)}
+.searchbox button{padding:14px 21px;border-radius:12px}
+.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.chip{background:#fff;border:1px solid var(--line);padding:7px 11px;border-radius:20px;color:#68738a;font-size:12px;cursor:pointer}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+.hero-art{position:relative;min-height:300px}
+.glow{position:absolute;inset:20px;background:linear-gradient(135deg,#e7e5ff,#d9fff4);filter:blur(5px);border-radius:35px;transform:rotate(-4deg)}
+.mock-panel{position:absolute;background:#fff;border:1px solid #eef0f6;border-radius:20px;padding:19px;box-shadow:0 24px 45px #29336d22;right:10px;top:15px;width:min(100%,380px)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}
+.mini-title{font-weight:800}.small-muted{font-size:11px;color:var(--muted)}
+.ai-tag{color:#6159df;background:#f0efff;border-radius:7px;padding:5px 8px;font-size:10px;font-weight:800}
+.product-mini{display:flex;align-items:center;gap:12px;border:1px solid var(--line);padding:10px;border-radius:13px;margin:9px 0}
+.prod-icon{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;font-size:23px;background:#f2f3f8}
+.product-mini strong{font-size:13px;display:block}.product-mini small{color:var(--muted);font-size:11px}
+.mini-price{margin-left:auto;text-align:right}.mini-price b{display:block;color:var(--mint)}
+.stats{display:flex;gap:25px;margin-top:26px;color:var(--muted);font-size:12px}
+.stats strong{color:var(--ink);font-size:16px;display:block}
+.section{padding:38px 0}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:19px}
+.section-title h2{font-size:25px;letter-spacing:-.7px}.section-title p{color:var(--muted);font-size:13px}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.trust-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;gap:13px}
+.trust-icon{width:37px;height:37px;border-radius:11px;background:#f0efff;color:var(--primary);display:grid;place-items:center;font-size:18px;flex:none}
+.trust-card h3{font-size:14px;margin-bottom:4px}.trust-card p{font-size:12px;color:var(--muted)}
+.compare-shell{background:#fff;border:1px solid var(--line);border-radius:23px;box-shadow:var(--shadow);overflow:hidden}
+.compare-top{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.result-title{display:flex;align-items:center;gap:12px}.result-title h2{font-size:20px}.result-title p{font-size:12px;color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:5px;color:#0b9c78;background:#e7fbf5;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800}
+.live:before{content:"";width:6px;height:6px;border-radius:50%;background:#11bd8d}
+.controls{display:flex;gap:9px}.select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 11px;color:#5e6981;font-size:12px}
+.compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:21px}
+.compare-card{border:1px solid var(--line);border-radius:17px;padding:16px;position:relative;transition:.25s;background:#fff}
+.compare-card:hover{transform:translateY(-4px);box-shadow:0 12px 25px #222b5012}
+.best{border:2px solid #16bd91}.best-label{position:absolute;right:12px;top:12px;background:#dffaf2;color:#079673;font-size:10px;font-weight:800;padding:5px 8px;border-radius:7px}
+.card-product{display:flex;gap:13px;margin-bottom:16px;padding-right:40px}.big-icon{width:63px;height:63px;border-radius:15px;display:grid;place-items:center;font-size:32px;background:#f4f5f9}
+.card-product h3{font-size:14px;line-height:1.35}.card-product p{font-size:11px;color:var(--muted);margin-top:4px}
+.platform{font-size:12px;font-weight:800;margin-bottom:13px;display:flex;align-items:center;gap:7px}.platform-dot{width:20px;height:20px;border-radius:6px;display:inline-grid;place-items:center;font-size:10px;color:#fff}
+.amazon{background:#ff9c25}.flipkart{background:#2775e9}.zepto{background:#7b51e8}.blinkit{background:#e7bf00}
+.price-row{display:flex;align-items:baseline;gap:8px}.price{font-size:25px;font-weight:850}.mrp{text-decoration:line-through;color:#9aa1b0;font-size:12px}.discount{color:#069875;font-size:11px;font-weight:800}
+.meta{margin:12px 0;border-top:1px solid var(--line);padding-top:12px;display:grid;gap:8px}.meta div{display:flex;justify-content:space-between;font-size:12px}.meta span:first-child{color:var(--muted)}.available{color:#079a75;font-weight:700}
+.card-actions{display:flex;gap:8px}.card-actions button{flex:1;padding:9px;border-radius:9px;font-size:11px;font-weight:750}.visit{background:var(--primary);color:white}.watch{background:#f1f2f7;color:#4d5870}
+.ai-section{padding:45px 0}.ai-box{background:linear-gradient(115deg,#1b2440,#33316b);color:#fff;border-radius:25px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:35px;overflow:hidden;position:relative}.ai-box:after{content:"";width:310px;height:310px;border-radius:50%;background:#6d63ff44;position:absolute;right:-90px;top:-120px;filter:blur(3px)}
+.ai-box h2{font-size:30px;letter-spacing:-1px;position:relative;z-index:1}.ai-box p{color:#c5cbed;font-size:14px;margin:11px 0 20px;max-width:480px;position:relative;z-index:1}
+.ask{display:flex;background:#fff;border-radius:12px;padding:5px;max-width:510px;position:relative;z-index:1}.ask input{flex:1;border:0;outline:0;padding:9px 10px;min-width:0;font-size:13px}.ask button{border-radius:9px;padding:9px 14px;background:#635bff;color:#fff;font-weight:700}
+.ai-insights{display:grid;grid-template-columns:1fr 1fr;gap:11px;position:relative;z-index:1}.insight{background:#ffffff12;border:1px solid #ffffff1d;border-radius:14px;padding:15px}.insight span{font-size:11px;color:#cdd2ef}.insight strong{display:block;margin-top:7px;font-size:16px}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px}.feature-icon{font-size:23px;margin-bottom:13px}.feature h3{font-size:14px}.feature p{font-size:12px;color:var(--muted);margin-top:7px}
+footer{margin-top:25px;background:#18223a;color:#c5cce0;padding:40px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:30px}.footer-logo{color:#fff;margin-bottom:12px}.footer-text{font-size:12px;max-width:250px;color:#9ca9c5}.footer h4{color:#fff;font-size:13px;margin-bottom:13px}.footer a{display:block;font-size:12px;margin:8px 0;color:#aab5cd}.copyright{border-top:1px solid #ffffff17;margin-top:28px;padding-top:17px;font-size:11px;color:#8e9bb7;display:flex;justify-content:space-between}
+.toast{position:fixed;bottom:24px;right:24px;background:#18223a;color:#fff;padding:13px 17px;border-radius:12px;box-shadow:var(--shadow);font-size:13px;transform:translateY(100px);opacity:0;transition:.3s;z-index:20}.toast.show{transform:none;opacity:1}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-art{display:none}.trust-grid,.features{grid-template-columns:repeat(2,1fr)}.compare-grid{grid-template-columns:repeat(2,1fr)}.ai-box{grid-template-columns:1fr}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}}
+@media(max-width:650px){.container{padding:0 16px}.topbar{display:none}.nav{height:64px;gap:10px}.navlinks{display:none}.nav-actions .outline-btn{display:none}.logo{font-size:18px}.hero{padding:38px 0 25px}h1{letter-spacing:-1.8px}.hero-copy{font-size:15px}.searchbox{padding:5px}.searchbox button{padding:12px 13px}.stats{gap:16px}.section{padding:27px 0}.trust-grid,.features,.compare-grid{grid-template-columns:1fr}.compare-top{align-items:flex-start;flex-direction:column}.controls{width:100%}.controls .select{flex:1}.compare-grid{padding:13px}.ai-box{padding:23px}.ai-insights{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.copyright{display:block}.copyright span{display:block;margin-top:7px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container"><span>🇮🇳 Built for smarter shopping across India</span><span>Prices refresh every few minutes · Transparent comparisons</span></div></div>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#"><b class="logo-mark">₹</b>Price<span>Pilot</span><small>AI</small></a>
+    <nav class="navlinks"><a href="#compare">Compare</a><a href="#features">Features</a><a href="#history">Price History</a><a href="#assistant">AI Assistant</a></nav>
+    <div class="nav-actions"><button class="icon-btn" aria-label="notifications">♧</button><button class="outline-btn" onclick="showToast('Sign in is coming soon')">Sign in</button><button class="primary-btn" onclick="focusSearch()">Start comparing</button></div>
+  </div>
+</header>
+<main>
+<section class="hero">
+<div class="container hero-grid">
+<div>
+  <div class="eyebrow"><i></i> AI-POWERED PRICE INTELLIGENCE</div>
+  <h1>One search.<br><em>Every better deal.</em></h1>
+  <p class="hero-copy">Compare prices, offers and delivery across India's top ecommerce and quick-commerce stores — in seconds.</p>
+  <div class="searchbox"><span class="search-icon">⌕</span><input id="searchInput" value="iPhone 16 128GB" placeholder="Try “best basmati rice under ₹500”"><button class="primary-btn" onclick="runSearch()">Compare prices</button></div>
+  <div class="chips"><button class="chip" onclick="setQuery('best 1kg basmati rice under ₹500')">Best basmati rice under ₹500</button><button class="chip" onclick="setQuery('wireless earbuds')">Wireless earbuds</button><button class="chip" onclick="setQuery('daily essentials near me')">Daily essentials near me</button></div>
+  <div class="stats"><div><strong>17+</strong> platforms</div><div><strong>2.4 Cr+</strong> products indexed</div><div><strong>₹18L+</strong> saved by users</div></div>
+</div>
+<div class="hero-art"><div class="glow"></div><div class="mock-panel"><div class="panel-head"><div><div class="mini-title">Your best deal is ready</div><div class="small-muted">iPhone 16 · 128GB · Black</div></div><span class="ai-tag">✦ AI MATCHED</span></div><div class="product-mini"><div class="prod-icon">📱</div><div><strong>Flipkart</strong><small>Free delivery · 2 days</small></div><div class="mini-price"><b>₹69,999</b><small>Save ₹5,000</small></div></div><div class="product-mini"><div class="prod-icon">📦</div><div><strong>Amazon</strong><small>Prime delivery · 1 day</small></div><div class="mini-price"><b>₹70,490</b><small>Save ₹4,509</small></div></div><div class="product-mini"><div class="prod-icon">⚡</div><div><strong>Tata CLiQ</strong><small>Delivery · 3 days</small></div><div class="mini-price"><b>₹71,999</b><small>Save ₹3,000</small></div></div></div></div>
+</div>
+</section>
+<section class="section"><div class="container"><div class="section-title"><div><h2>Shop with confidence</h2><p>Everything you need to make a smarter decision.</p></div></div><div class="trust-grid"><div class="trust-card"><div class="trust-icon">⚡</div><div><h3>Live price updates</h3><p>Fresh prices and offers from trusted stores.</p></div></div><div class="trust-card"><div class="trust-icon">✦</div><div><h3>AI product matching</h3><p>We match the exact model, size and variant.</p></div></div><div class="trust-card"><div class="trust-icon">⌖</div><div><h3>Location-aware</h3><p>See availability and delivery for your area.</p></div></div><div class="trust-card"><div class="trust-icon">✓</div><div><h3>Transparent results</h3><p>No hidden fees. See the complete landed price.</p></div></div></div></div></section>
+<section class="section" id="compare"><div class="container"><div class="section-title"><div><h2>Top comparison results</h2><p>AI-matched results for <b id="queryLabel">“iPhone 16 128GB”</b></p></div><span class="live">LIVE DATA</span></div><div class="compare-shell"><div class="compare-top"><div class="result-title"><div><h2>iPhone 16 128GB</h2><p>Exact model match · 4 sellers found</p></div></div><div class="controls"><select class="select" id="sortSelect" onchange="sortCards()"><option value="price">Sort: Lowest price</option><option value="delivery">Fastest delivery</option><option value="rating">Highest rated</option></select><select class="select"><option>All platforms</option><option>Marketplaces</option><option>Quick-commerce</option></select></div></div><div class="compare-grid" id="cards">
+<div class="compare-card best" data-price="69999" data-delivery="2" data-rating="4.5"><span class="best-label">BEST VALUE</span><div class="card-product"><div class="big-icon">📱</div><div><h3>Apple iPhone 16<br>128GB · Black</h3><p>Exact match · New</p></div></div><div class="platform"><span class="platform-dot flipkart">F</span> Flipkart <span class="small-muted">★ 4.6</span></div><div class="price-row"><span class="price">₹69,999</span><span class="mrp">₹79,900</span><span class="discount">12% off</span></div><div class="meta"><div><span>Delivery</span><b class="available">Free · 2 days</b></div><div><span>Availability</span><b class="available">In stock</b></div><div><span>Seller rating</span><b>4.7 / 5</b></div></div><div class="card-actions"><button class="visit" onclick="showToast('Opening Flipkart offer…')">View deal ↗</button><button class="watch" onclick="showToast('Price alert set for ₹69,999')">♡ Alert</button></div></div>
+<div class="compare-card" data-price="70490" data-delivery="1" data-rating="4.4"><div class="card-product"><div class="big-icon">📦</div><div><h3>Apple iPhone 16<br>128GB · Black</h3><p>Exact match · New</p></div></div><div class="platform"><span class="platform-dot amazon">a</span> Amazon <span class="small-muted">★ 4.5</span></div><div class="price-row"><span class="price">₹70,490</span><span class="mrp">₹79,900</span><span class="discount">12% off</span></div><div class="meta"><div><span>Delivery</span><b class="available">Free · Tomorrow</b></div><div><span>Availability</span><b class="available">In stock</b></div><div><span>Seller rating</span><b>4.6 / 5</b></div></div><div class="card-actions"><button class="visit" onclick="showToast('Opening Amazon offer…')">View deal ↗</button><button class="watch" onclick="showToast('Price alert set for ₹70,490')">♡ Alert</button></div></div>
+<div class="compare-card" data-price="71999" data-delivery="3" data-rating="4.2"><div class="card-product"><div class="big-icon">📱</div><div><h3>Apple iPhone 16<br>128GB · Black</h3><p>Exact match · New</p></div></div><div class="platform"><span class="platform-dot zepto">T</span> Tata CLiQ <span class="small-muted">★ 4.3</span></div><div class="price-row"><span class="price">₹71,999</span><span class="mrp">₹79,900</span><span class="discount">10% off</span></div><div class="meta"><div><span>Delivery</span><b>₹49 · 3 days</b></div><div><span>Availability</span><b class="available">In stock</b></div><div><span>Seller rating</span><b>4.5 / 5</b></div></div><div class="card-actions"><button class="visit" onclick="showToast('Opening Tata CLiQ offer…')">View deal ↗</button><button class="watch" onclick="showToast('Price alert set for ₹71,999')">♡ Alert</button></div></div>
+</div></div></div></section>
+<section class="ai-section" id="assistant"><div class="container"><div class="ai-box"><div><div class="eyebrow">✦ YOUR AI SHOPPING COPILOT</div><h2>Not sure what to buy?</h2><p>Tell us what you need in plain English. PricePilot AI will find, compare and recommend the best options for your budget.</p><div class="ask"><input id="askInput" placeholder="Ask: “Best phone under ₹25,000”"><button onclick="askAI()">Ask AI</button></div></div><div class="ai-insights"><div class="insight"><span>AI recommendation</span><strong>Best value today</strong><small>Based on price, ratings & warranty</small></div><div class="insight"><span>Price prediction</span><strong>Likely to drop 4%</strong><small>Consider waiting 7–10 days</small></div><div class="insight"><span>Smart alternative</span><strong>iPhone 15 · ₹59,999</strong><small>92% match for your search</small></div><div class="insight"><span>Cart optimizer</span><strong>Save ₹1,248</strong><small>Split your cart across 3 stores</small></div></div></div></div></section>
+<section class="section" id="features"><div class="container"><div class="section-title"><div><h2>More ways to save</h2><p>Powerful tools for everyday shopping.</p></div></div><div class="features"><div class="feature" id="history"><div class="feature-icon">📈</div><h3>Price history</h3><p>Track historical prices and know if today is a good time to buy.</p></div><div class="feature"><div class="feature-icon">🔔</div><h3>Smart price alerts</h3><p>Get notified when your favourite product hits your target price.</p></div><div class="feature"><div class="feature-icon">🛒</div><h3>Cart comparison</h3><p>Compare your entire cart and find the cheapest checkout combination.</p></div><div class="feature"><div class="feature-icon">📍</div><h3>Quick-commerce nearby</h3><p>Check Zepto, Blinkit and more based on your delivery location.</p></div></div></div></section>
+</main>
+<footer><div class="container"><div class="footer-grid"><div><a class="logo footer-logo" href="#"><b class="logo-mark">₹</b>Price<span>Pilot</span><small>AI</small></a><p class="footer-text">India's intelligent shopping companion for better prices, faster delivery and confident decisions.</p></div><div><h4>Product</h4><a href="#compare">Compare prices</a><a href="#history">Price history</a><a href="#assistant">AI Assistant</a></div><div><h4>Supported stores</h4><a href="#">Amazon · Flipkart</a><a href="#">Myntra · Meesho</a><a href="#">Zepto · Blinkit</a></div><div><h4>Company</h4><a href="#">About PricePilot</a><a href="#">How it works</a><a href="#">Contact support</a></div></div><div class="copyright">© 2025 PricePilot AI. Made for smarter India.<span>Prices shown are indicative and may change on partner websites.</span></div></div></footer>
+<div class="toast" id="toast"></div>
+<script>
+const input=document.getElementById('searchInput'),label=document.getElementById('queryLabel');
+function focusSearch(){input.focus();input.scrollIntoView({behavior:'smooth',block:'center'})}
+function setQuery(q){input.value=q;runSearch()}
+function runSearch(){let q=input.value.trim()||'popular products';label.textContent='“'+q+'”';showToast('AI matched products across 17+ platforms');document.getElementById('compare').scrollIntoView({behavior:'smooth'})}
+function showToast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2800)}
+function askAI(){const q=document.getElementById('askInput').value.trim();showToast(q?'AI is preparing your best matches…':'Try asking about a product, budget or preference')}
+function sortCards(){const grid=document.getElementById('cards'),cards=[...grid.children],v=document.getElementById('sortSelect').value;cards.sort((a,b)=>Number(a.dataset[v])-Number(b.dataset[v]));cards.forEach(c=>grid.appendChild(c))}
+input.addEventListener('keydown',e=>{if(e.key==='Enter')runSearch()});
+</script>
+</body>
+</html>
